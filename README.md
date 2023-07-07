@@ -1,10 +1,25 @@
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" width="200" />
 
-<h2></h2>
+<h2>Repositório relacionado a estudos com Next.js</h2>
 
 Este repositório contém exemplos e exercícios relacionados ao estudo e prática do Next.js, um framework popular para desenvolvimento de aplicações React.
 
+<h2>Suas principais vantagens</h2>
+
+**Renderização do lado do servidor (Server-Side Rendering - SSR):** O Next.js permite renderizar as páginas do lado do servidor, o que melhora o desempenho e a experiência do usuário, especialmente para páginas com conteúdo dinâmico.
+
+- **Renderização estática (Static Site Generation - SSG):** Além do SSR, o Next.js também suporta a renderização estática, gerando páginas HTML estáticas em tempo de build. Isso é ideal para páginas com conteúdo estático que não precisa ser gerado dinamicamente a cada solicitação.
+
+- **Hot Reloading:** O Next.js possui suporte embutido para hot reloading, o que significa que as alterações no código são refletidas instantaneamente no navegador, sem a necessidade de recarregar a página manualmente.
+
+- **Rotas simples e intuitivas:** O Next.js utiliza a convenção de pastas para a definição de rotas. Basta criar um arquivo na pasta `pages` e ele será automaticamente mapeado para uma rota acessível no aplicativo.
+
+- **Suporte a TypeScript:** O Next.js tem suporte nativo para TypeScript, permitindo um desenvolvimento mais seguro e produtivo com a verificação de tipos estáticos.
+
+- **Otimizações de desempenho embutidas:** O Next.js possui otimizações de desempenho integradas, como carregamento automático de código, divisão de código e pré-busca de rotas, o que resulta em tempos de carregamento mais rápidos e melhor experiência do usuário.
+
+<hr>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
