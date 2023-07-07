@@ -1,3 +1,11 @@
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" width="200" />
+
+<h2></h2>
+
+Este repositório contém exemplos e exercícios relacionados ao estudo e prática do Next.js, um framework popular para desenvolvimento de aplicações React.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
