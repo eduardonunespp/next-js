@@ -1,7 +1,7 @@
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" width="200" />
 
-<h2>Repositório relacionado a estudos com Next.js</h2>
+<h2>Repositório relacionado a estudos com o Next.js</h2>
 
 Este repositório contém exemplos e exercícios relacionados ao estudo e prática do Next.js, um framework popular para desenvolvimento de aplicações React.
 
