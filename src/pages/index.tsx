@@ -12,6 +12,9 @@ import camiseta3 from "../assets/MDB8YWNjdF8xTWxtSjRHdWRoOE9qNGJafGZsX3Rlc3RfajM
 import { stripe } from "../lib/stripe";
 import { GetServerSideProps, GetStaticProps } from "next";
 import Stripe from "stripe";
+import Link from "next/link";
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +40,9 @@ const Home: React.FC<Props> = ({ products }) => {
       <S.HomeContainer ref={sliderRef} className="keen-slider ">
         {products.map((product) => {
           return (
-            <S.Product key={product.id} className="keen-slider__slide">
+           
+            <Link href={`/product/${product.id}`} key={product.id} >
+            <S.Product className="keen-slider__slide">
               <Image
                 src={product.imageUrl}
                 alt="sim"
@@ -47,9 +52,10 @@ const Home: React.FC<Props> = ({ products }) => {
 
               <S.Footer>
                 <strong>{product.name}</strong>
-                <span>{'R$ ' + product.price}</span>
+                <span>{product.price}</span>
               </S.Footer>
             </S.Product>
+            </Link>
           );
         })}
 
@@ -105,16 +111,17 @@ export const getStaticProps: GetStaticProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: price.unit_amount !== null? price.unit_amount / 100  : '' 
+      price: new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(price.unit_amount !== null ? price.unit_amount / 100 : 0),
     };
   });
-
-  console.log("response: ", response.data);
 
   return {
     props: {
       products,
     },
-    revalidate: 60 * 60 * 2
+    revalidate: 60 * 60 * 2,
   };
 };

@@ -24,6 +24,12 @@ export const Product = styled("div", {
     objectFit: "cover",
   },
 
+  span: {
+    fontSize: '$xl',
+    fontWeight: 'bold',
+    color: '$green300'
+  },
+
   "&:hover": {
     footer: {
       transform: "translateY(0%)",
