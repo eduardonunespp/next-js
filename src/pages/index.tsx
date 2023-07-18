@@ -10,7 +10,7 @@ import camiseta1 from "../assets/MDB8YWNjdF8xTWxtSjRHdWRoOE9qNGJafGZsX3Rlc3RfajM
 import camiseta2 from "../assets/MDB8YWNjdF8xTWxtSjRHdWRoOE9qNGJafGZsX3Rlc3RfajMyTE5CczBFZFAzVWN0MmFuc29aZ3B000lvwPxZWz.png";
 import camiseta3 from "../assets/MDB8YWNjdF8xTWxtSjRHdWRoOE9qNGJafGZsX3Rlc3RfajMyTE5CczBFZFAzVWN0MmFuc29aZ3B000lvwPxZWz.png";
 import { stripe } from "../lib/stripe";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import Stripe from "stripe";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -47,7 +47,7 @@ const Home: React.FC<Props> = ({ products }) => {
 
               <S.Footer>
                 <strong>{product.name}</strong>
-                <span>{product.price}</span>
+                <span>{'R$ ' + product.price}</span>
               </S.Footer>
             </S.Product>
           );
@@ -93,7 +93,7 @@ const Home: React.FC<Props> = ({ products }) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
     expand: ["data.default_price"],
   });
@@ -101,13 +101,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const products = response.data.map((product) => {
     const price = product.default_price as Stripe.Price;
 
-    console.log("imagensss: ", product.images[0]);
-
     return {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: price.unit_amount,
+      price: price.unit_amount !== null? price.unit_amount / 100  : '' 
     };
   });
 
@@ -117,5 +115,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       products,
     },
+    revalidate: 60 * 60 * 2
   };
 };
