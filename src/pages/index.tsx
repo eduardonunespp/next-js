@@ -14,20 +14,9 @@ import { GetServerSideProps, GetStaticProps } from "next";
 import Stripe from "stripe";
 import Link from "next/link";
 
+import { ProductsProps } from "../types";
 
-
-const inter = Inter({ subsets: ["latin"] });
-
-type Props = {
-  products: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: number;
-  }[];
-};
-
-const Home: React.FC<Props> = ({ products }) => {
+const Home: React.FC<ProductsProps> = ({ products }) => {
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -40,58 +29,27 @@ const Home: React.FC<Props> = ({ products }) => {
       <S.HomeContainer ref={sliderRef} className="keen-slider ">
         {products.map((product) => {
           return (
-           
-            <Link href={`/product/${product.id}`} key={product.id} >
-            <S.Product className="keen-slider__slide">
-              <Image
-                src={product.imageUrl}
-                alt="sim"
-                width={520}
-                height={480}
-              />
+            <Link
+              href={`/product/${product.id}`}
+              key={product.id}
+              prefetch={false}
+            >
+              <S.Product className="keen-slider__slide">
+                <Image
+                  src={product.imageUrl}
+                  alt="sim"
+                  width={520}
+                  height={480}
+                />
 
-              <S.Footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
-              </S.Footer>
-            </S.Product>
+                <S.Footer>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </S.Footer>
+              </S.Product>
             </Link>
           );
         })}
-
-        <S.Product className="keen-slider__slide">
-          <Image src={camiseta1} alt="sim" width={520} height={480} />
-
-          <S.Footer>
-            <strong>Camiseta X</strong>
-            <span>R$ 79,98</span>
-          </S.Footer>
-        </S.Product>
-        <S.Product className="keen-slider__slide">
-          <Image src={camiseta1} alt="sim" width={520} height={480} />
-
-          <S.Footer>
-            <strong>Camiseta X</strong>
-            <span>R$ 79,98</span>
-          </S.Footer>
-        </S.Product>
-        <S.Product className="keen-slider__slide">
-          <Image src={camiseta1} alt="sim" width={520} height={480} />
-
-          <S.Footer>
-            <strong>Camiseta X</strong>
-            <span>R$ 79,98</span>
-          </S.Footer>
-        </S.Product>
-
-        <S.Product className="keen-slider__slide">
-          <Image src={camiseta1} alt="sim" width={520} height={480} />
-
-          <S.Footer>
-            <strong>Camiseta X</strong>
-            <span>R$ 79,98</span>
-          </S.Footer>
-        </S.Product>
       </S.HomeContainer>
     </>
   );
