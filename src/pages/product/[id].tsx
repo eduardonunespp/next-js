@@ -19,6 +19,10 @@ const Product: React.FC<ProductProps> = ({ product }) => {
     <p>...loading</p>;
   }
 
+  const RequestId = () => {
+    console.log(product.defaultPriceId)
+  }
+
   return (
     <S.ProductContainer>
       <S.ImageContainer>
@@ -35,18 +39,18 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
         <p>{product.description}</p>
 
-        <button>Comprar agora</button>
+        <button onClick={RequestId} >Comprar agora</button>
       </S.ProductDetails>
     </S.ProductContainer>
   );
 };
 
 export default Product;
-
+ 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [{ params: { id: "prod_OHQ7vmpd5kyNSy" } }],
-    fallback: "blocking",
+    fallback: true,
   };
 };
 
@@ -72,6 +76,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
           currency: "BRL",
         }).format(price.unit_amount !== null ? price.unit_amount / 100 : 0),
         description: product.description,
+        defaultPriceId: price.id
       },
     },
   };
