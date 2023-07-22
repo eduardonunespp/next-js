@@ -4,6 +4,7 @@ type Product = {
   imageUrl: string;
   price: number;
   description?: string;
+  defaultPriceId: string
 };
 
 export type ProductsProps = {
