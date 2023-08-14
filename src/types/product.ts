@@ -14,3 +14,11 @@ export type ProductsProps = {
 export type ProductProps = {
   product: Product;
 };
+
+export type SuccessProps = {
+  customerName: string,
+  product: {
+    name: string,
+    imageUrl: string,
+  }
+}

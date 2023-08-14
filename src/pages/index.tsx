@@ -1,10 +1,11 @@
 import { styled } from "../styles";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import * as S from "../styles/pages/";
 import Image from "next/image";
+import Head from "next/head";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import * as S from "../styles/pages/";
 
 import camiseta1 from "../assets/MDB8YWNjdF8xTWxtSjRHdWRoOE9qNGJafGZsX3Rlc3RfajMyTE5CczBFZFAzVWN0MmFuc29aZ3B000lvwPxZWz.png";
 import camiseta2 from "../assets/MDB8YWNjdF8xTWxtSjRHdWRoOE9qNGJafGZsX3Rlc3RfajMyTE5CczBFZFAzVWN0MmFuc29aZ3B000lvwPxZWz.png";
@@ -26,6 +27,9 @@ const Home: React.FC<ProductsProps> = ({ products }) => {
 
   return (
     <>
+      <Head>
+        <title>Home | Ignite Shop</title>
+      </Head>
       <S.HomeContainer ref={sliderRef} className="keen-slider ">
         {products.map((product) => {
           return (

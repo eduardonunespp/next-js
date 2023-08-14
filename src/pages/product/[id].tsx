@@ -7,6 +7,7 @@ import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { stripe } from "@/src/lib/stripe";
 import Stripe from "stripe";
 import Image from "next/image";
+import Head from 'next/head'
 import axios from "axios";
 
 import { ProductProps } from "../../types";
@@ -46,6 +47,11 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   };
 
   return (
+    <>
+        <Head>
+        <title>{product.name} | Ignite Shop</title>
+      </Head>
+    
     <S.ProductContainer>
       <S.ImageContainer>
         <Image
@@ -64,6 +70,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
       </S.ProductDetails>
     </S.ProductContainer>
+    </>
   );
 };
 
